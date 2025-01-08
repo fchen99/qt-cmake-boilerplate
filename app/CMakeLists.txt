@@ -4,6 +4,13 @@ else ()
     add_executable(app)
 endif()
 
+# 若无下面这个设置，则 exe 文件会生成到 build/Debug 中，而 qm 文件会生成到 build/Debug/app 目录下
+set_target_properties(
+    app
+    PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+)
+
 file(GLOB UIs ${CMAKE_SOURCE_DIR}/app/*.ui)
 qt_add_translations(
     app
@@ -36,4 +43,11 @@ add_custom_command(
     POST_BUILD
     COMMAND Qt6::windeployqt
     ARGS $<TARGET_FILE:app>
+)
+
+add_dependencies(app COPYING_ASSETS)
+add_custom_target(COPYING_ASSETS DEPENDS ${CMAKE_BINARY_DIR}/COPYING_ASSETS_DUMMY)
+add_custom_command(
+    OUTPUT ${CMAKE_BINARY_DIR}/COPYING_ASSETS_DUMMY
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/assets/styles $<TARGET_FILE_DIR:app>/styles
 )

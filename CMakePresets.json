@@ -4,23 +4,22 @@
         {
             "name": "clang",
             "hidden": true,
-            "generator": "Ninja"
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}"
         },
         {
             "name": "Debug",
             "inherits": "clang",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug"
-            },
-            "binaryDir": "${sourceDir}/build/Debug"
+            }
         },
         {
             "name": "Release",
             "inherits": "clang",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
-            },
-            "binaryDir": "${sourceDir}/build/Release"
+            }
         }
     ],
     "buildPresets": [
