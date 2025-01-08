@@ -1,0 +1,10 @@
+{
+  "dependencies": [
+    "qtbase",
+    "qtsvg",
+    {
+      "name": "qttools",
+      "features": ["linguist"]
+    }
+  ]
+}

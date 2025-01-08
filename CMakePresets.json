@@ -1,0 +1,45 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "clang",
+            "hidden": true,
+            "generator": "Ninja"
+        },
+        {
+            "name": "Debug",
+            "inherits": "clang",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "binaryDir": "${sourceDir}/build/Debug"
+        },
+        {
+            "name": "Release",
+            "inherits": "clang",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            },
+            "binaryDir": "${sourceDir}/build/Release"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "clang",
+            "hidden": true,
+            "jobs": 8
+        },
+        {
+            "name": "Debug",
+            "inherits": "clang",
+            "configurePreset": "Debug",
+            "configuration": "Debug"
+        },
+        {
+            "name": "Release",
+            "inherits": "clang",
+            "configurePreset": "Release",
+            "configuration": "Release"
+        }
+    ]
+}
