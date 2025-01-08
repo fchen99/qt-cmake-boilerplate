@@ -1,4 +1,8 @@
-add_executable(app)
+if (WIN32)
+    add_executable(app app.rc)
+else ()
+    add_executable(app)
+endif()
 
 file(GLOB UIs ${CMAKE_SOURCE_DIR}/app/*.ui)
 qt_add_translations(
