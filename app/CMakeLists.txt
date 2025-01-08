@@ -1,3 +1,7 @@
+project(app LANGUAGES CXX VERSION 0.1.0.0 DESCRIPTION "My sample app")
+
+configure_file(config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+
 if (WIN32)
     add_executable(app app.rc)
 else ()
@@ -32,6 +36,7 @@ target_include_directories(
     app
     PRIVATE
     ${CMAKE_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
 )
 target_link_libraries(
     app
