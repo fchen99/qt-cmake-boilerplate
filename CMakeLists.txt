@@ -17,5 +17,5 @@ find_package(
 )
 qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES zh)
 
-# add_subdirectory(controls)
+add_subdirectory(controls)
 add_subdirectory(app bin)
