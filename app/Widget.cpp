@@ -1,15 +1,37 @@
 #include "Widget.h"
 #include "ui_Widget.h"
+#include <QActionGroup>
 #include <QApplication>
 #include <QDebug>
+#include <QFile>
 #include <QTranslator>
+
 
 Widget::Widget(QWidget *parent) : QWidget(parent), UI(new Ui::Widget) {
     UI->setupUi(this);
     UI->retranslateUi(this);
 
-    UI->toolButton->addAction(tr("User manual"));
-    UI->toolButton->addAction(tr("Help"));
+    ActionLightTheme = UI->toolButton->addAction(tr("Light"));
+    ActionDarkTheme = UI->toolButton->addAction(tr("Dark"));
+
+    ActionLightTheme->setCheckable(true);
+    ActionDarkTheme->setCheckable(true);
+
+    auto actionGroup = new QActionGroup(this);
+    actionGroup->addAction(ActionLightTheme);
+    actionGroup->addAction(ActionDarkTheme);
+
+    connect(ActionLightTheme, &QAction::triggered, this, [this](bool checked) {
+        if (!checked) return;
+        applyTheme("light");
+    });
+
+    connect(ActionDarkTheme, &QAction::triggered, this, [this](bool checked) {
+        if (!checked) return;
+        applyTheme("dark");
+    });
+
+    ActionLightTheme->setChecked(true);
 }
 
 void Widget::exitApp() {
@@ -30,6 +52,8 @@ void Widget::applyChineseLang(bool enable) {
 void Widget::applyLang(int langId) {
     QTranslator translator;
     auto qm = langId == 0 ? "app_en.qm" : "app_zh.qm";
+    auto path = QString("%1/%2").arg(qApp->applicationDirPath(), qm);
+
     Q_UNUSED(translator.load(qm));
     qApp->installTranslator(&translator);
 
@@ -37,6 +61,14 @@ void Widget::applyLang(int langId) {
 
     // 非 .ui 上的文本需要自行处理语言切换。
     // 在 .ts 文件中，出现多次的翻译，只会添加一条，并纪录其出现的多个位置。
-    UI->toolButton->actions()[0]->setText(tr("User manual"));
-    UI->toolButton->actions()[1]->setText(tr("Help"));
+    ActionLightTheme->setText(tr("Light"));
+    ActionDarkTheme->setText(tr("Dark"));
+}
+
+void Widget::applyTheme(const QString &theme) {
+    auto path = QString("%1/styles/%2.qss").arg(qApp->applicationDirPath(), theme);
+
+    QFile file(path);
+    file.open(QFile::ReadOnly);
+    setStyleSheet(QLatin1String(file.readAll()));
 }

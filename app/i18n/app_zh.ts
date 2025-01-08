@@ -4,19 +4,27 @@
 <context>
     <name>Widget</name>
     <message>
-        <location filename="../Widget.cpp" line="11"/>
-        <location filename="../Widget.cpp" line="40"/>
         <source>User manual</source>
-        <translation>用户手册</translation>
+        <translation type="vanished">用户手册</translation>
     </message>
     <message>
-        <location filename="../Widget.cpp" line="12"/>
-        <location filename="../Widget.cpp" line="41"/>
         <source>Help</source>
-        <translation>帮助</translation>
+        <translation type="vanished">帮助</translation>
     </message>
     <message>
-        <location filename="../Widget.cpp" line="16"/>
+        <location filename="../Widget.cpp" line="14"/>
+        <location filename="../Widget.cpp" line="64"/>
+        <source>Light</source>
+        <translation>白色</translation>
+    </message>
+    <message>
+        <location filename="../Widget.cpp" line="15"/>
+        <location filename="../Widget.cpp" line="65"/>
+        <source>Dark</source>
+        <translation>黑色</translation>
+    </message>
+    <message>
+        <location filename="../Widget.cpp" line="38"/>
         <source>About to exit app</source>
         <translation>即将退出应用程序</translation>
     </message>

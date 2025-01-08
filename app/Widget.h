@@ -17,10 +17,15 @@ private slots:
     void applyEnglishLang(bool);
     void applyChineseLang(bool);
 
+    void applyTheme(const QString &theme);
+
 private:
     // 0: english; 1: 中文
     void applyLang(int langId);
 
 private:
     Ui::Widget *UI;
+
+    QAction *ActionLightTheme;
+    QAction *ActionDarkTheme;
 };
