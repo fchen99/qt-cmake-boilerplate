@@ -128,8 +128,42 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>radioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Widget</receiver>
+   <slot>applyEnglishLang(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>256</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>247</x>
+     <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Widget</receiver>
+   <slot>applyChineseLang(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>297</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>270</x>
+     <y>73</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>exitApp()</slot>
+  <slot>applyEnglishLang(bool)</slot>
+  <slot>applyChineseLang(bool)</slot>
  </slots>
 </ui>

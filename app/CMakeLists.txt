@@ -1,4 +1,14 @@
 add_executable(app)
+
+file(GLOB UIs ${CMAKE_SOURCE_DIR}/app/*.ui)
+qt_add_translations(
+    app
+    SOURCES ${UIs}
+    TS_FILE_DIR ${CMAKE_SOURCE_DIR}/app/i18n
+    TS_FILE_BASE app
+    # TARGETS ${CMAKE_SOURCE_DIR}/app/i18n/en.ts ${CMAKE_SOURCE_DIR}/app/i18n/zh.ts
+)
+
 target_sources(
     app
     PRIVATE

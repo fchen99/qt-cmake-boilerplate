@@ -14,6 +14,12 @@ public:
 
 private slots:
     void exitApp();
+    void applyEnglishLang(bool);
+    void applyChineseLang(bool);
+
+private:
+    // 0: english; 1: 中文
+    void applyLang(int langId);
 
 private:
     Ui::Widget *UI;
