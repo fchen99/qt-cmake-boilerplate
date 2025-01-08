@@ -32,6 +32,7 @@ Widget::Widget(QWidget *parent) : QWidget(parent), UI(new Ui::Widget) {
     });
 
     ActionLightTheme->setChecked(true);
+    applyTheme("light");
 }
 
 void Widget::exitApp() {

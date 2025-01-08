@@ -19,11 +19,14 @@ qt_add_translations(
     TS_FILE_BASE app
 )
 
+qt_add_resources(RESs app.qrc)
+
 target_sources(
     app
     PRIVATE
     Widget.cpp
     main.cpp
+    ${RESs}
 )
 target_include_directories(
     app
